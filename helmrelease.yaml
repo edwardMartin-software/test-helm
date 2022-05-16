@@ -1,0 +1,16 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: flux-test
+  namespace: default
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: ./docs
+      version: '4.0.x'
+      sourceRef:
+        kind: GitRepository
+        name: testhelm
+        namespace: flux-system
+      interval: 1m
